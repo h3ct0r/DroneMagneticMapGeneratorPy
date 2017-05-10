@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>Map Template - Route Map</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+        /* Absolute Center Spinner */
+        .loading {
+          position: fixed;
+          z-index: 999999;
+          height: 2em;
+          width: 2em;
+          overflow: show;
+          margin: auto;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+        }
+
+        /* Transparent Overlay */
+        .loading:before {
+          content: '';
+          display: block;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0,0,0,0.7);
+          background-image: url(http://www.sp.senac.br/imagens/loading.gif);
+          background-repeat:no-repeat;
+          background-position: center center;
+          background-size: 80px 80px;
+        }
+
+        /* :not(:required) hides these rules from IE9 and below */
+        .loading:not(:required) {
+          /* hide "loading..." text */
+          font: 0/0 a;
+          color: transparent;
+          text-shadow: none;
+          background-color: transparent;
+          border: 0;
+        }
+
+        .loading:not(:required):after {
+          content: '';
+          display: block;
+          font-size: 10px;
+          width: 1em;
+          height: 1em;
+          margin-top: -0.5em;
+        }
+
+        .path-info {
+            background-color: #fff;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
+
+    <link href='https://cdn.rawgit.com/Leaflet/Leaflet.draw/leaflet-master/dist/leaflet.draw.css' rel='stylesheet' />
+    <script src='https://cdn.rawgit.com/Leaflet/Leaflet.draw/leaflet-master/dist/leaflet.draw.js'></script>
+
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.2.3/leaflet.draw.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.2.3/leaflet.draw.js'></script>
+
+    <div id="loading_modal" class="loading" style="display:none;">Loading&#8230;</div>
+
+    <div id="map" style="width:100%; height:100%">
+        <div style="position: absolute; display:table; width:100%; height:100%">
+            <div style="display: table-cell; vertical-align: middle;">
+                <div id="map-loading-msg" style="margin-left: auto; margin-right: auto; text-align: center;">
+                    Loading map please wait...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        L.Polyline = L.Polyline.extend({
+            getDistance: function(system) {
+                // distance in meters
+                var mDistanse = 0, length = this._latlngs.length;
+
+                for (var i = 1; i < length; i++) {
+                    mDistanse += this._latlngs[i].distanceTo(this._latlngs[i - 1]);
+                }
+
+                // optional
+                return mDistanse;
+            }
+        });
+
+
+        var tileLayer = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+            maxZoom: 20,
+            subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+        });
+
+        var map = new L.Map('map', {
+            layers: [tileLayer],
+            //center: new L.LatLng(-19.8695912, -43.9583309),
+            center: new L.LatLng(-20.39553, -43.51259),
+            zoom: 19,
+            scrollWheelZoom: false,
+            touchZoom: false,
+            doubleClickZoom: false
+        });
+
+        var north = L.control({position: "bottomright"});
+        north.onAdd = function(map) {
+            var div = L.DomUtil.create("div", "info legend");
+            div.innerHTML = '<img src="http://www.clker.com/cliparts/D/C/K/D/Q/c/red-north-arrow-hi.png" style="width:40px; height:auto;">';
+            return div;
+        }
+        north.addTo(map);
+
+        var shapeInfo = L.control({position: "bottomleft"});
+        shapeInfo.onAdd = function(map) {
+            var div = L.DomUtil.create("div", "info legend leaflet-bar path-info");
+            div.id = 'leaflet-shape-info';
+            div.innerHTML = 'No shape info available yet, please generate a new shape';
+            return div;
+        }
+        shapeInfo.addTo(map);
+
+        var pathInfo = L.control({position: "bottomleft"});
+        pathInfo.onAdd = function(map) {
+            var div = L.DomUtil.create("div", "info legend leaflet-bar path-info");
+            div.id = 'leaflet-path-info';
+            div.innerHTML = 'No path info available yet, please generate a new path';
+            return div;
+        }
+        pathInfo.addTo(map);
+
+        var widthInfo = L.control({position: "bottomleft"});
+        widthInfo.onAdd = function(map) {
+            var div = L.DomUtil.create("div", "info legend leaflet-bar path-info");
+            div.id = 'leaflet-width-info';
+            div.innerHTML = 'Width: 0 mts';
+            return div;
+        }
+        widthInfo.addTo(map);
+
+        var colorArray = [  '#005EFF',
+                            '#FF00D9',
+                            '#FF0000',
+                            '#00FF00',
+                            '#DDFF00',
+                            '#FFA200',
+                            '#FF0DFF',
+                            '#E82C0C',
+                            '#1847FF',
+                            '#26FF71'   ];
+
+        var featureGroup = L.featureGroup().addTo(map);
+        var drawedPolygons = [];
+        var drawedPolygon = undefined;
+        var generatedPoly = undefined;
+        var robotGPS = undefined;
+
+        var polyline_options = {
+            color: '#000'
+        };
+
+        var drawControlFull = new L.Control.Draw({
+            edit: {
+                featureGroup: featureGroup
+            },
+            draw: {
+                rectangle: false,
+                polyline: false,
+                circle: false,
+                marker: false
+            }
+        });
+
+        var drawControlEditOnly = new L.Control.Draw({
+            edit: {
+                featureGroup: featureGroup
+            },
+            draw: false
+        });
+
+        map.addControl(drawControlFull);
+
+        map.on('draw:created', function(e) {
+            var layer = e.layer;
+            drawedPolygon = layer;
+
+            layer.addTo(featureGroup);
+            drawControlFull.removeFrom(map);
+            drawControlEditOnly.addTo(map);
+            setShapeArea(L.GeometryUtil.geodesicArea(layer.getLatLngs()));
+        });
+
+        map.on('draw:edited', function(e) {
+            e.layers.eachLayer(function(layer) {
+                drawedPolygon = layer;
+                setShapeArea(L.GeometryUtil.geodesicArea(layer.getLatLngs()));
+            });
+        });
+
+        map.on("draw:deleted", function(e) {
+            if (featureGroup.getLayers().length === 0) {
+                drawControlEditOnly.removeFrom(map);
+                drawControlFull.addTo(map);
+                drawedPolygon = undefined;
+                document.getElementById('leaflet-shape-info').innerHTML = 'No shape info available yet, \
+                please generate a new shape';
+            };
+        });
+
+        function setShapeArea(a){
+            document.getElementById('leaflet-shape-info').innerHTML = 'Shape area: ' + (a).toFixed(2) + ' mts2';
+        }
+
+        function setPathLengthMet(m){
+            document.getElementById('leaflet-path-info').innerHTML = 'Path length: ' + (m).toFixed(2) + ' mts';
+        }
+
+        function addLoadingModal(){
+            document.getElementById('loading_modal').style.display = 'block';
+        }
+
+        function removeLoadingModal(){
+            document.getElementById('loading_modal').style.display = 'none';
+        }
+
+        function updateCoverageWidthInMetersBox(w, size){
+            document.getElementById('leaflet-width-info').innerHTML = 'Coverage width: ' + (w).toFixed(2) + ' mts for ' + size + ' waypoints';
+        }
+
+        function sendShapeToQT() {
+            if (drawedPolygon) {
+                console.log('getShapeGPS')
+
+                var gps_arr = [];
+                var pixel_arr = [];
+                drawedPolygon.getLatLngs().forEach(function(gpsPoint) {
+                    console.log(gpsPoint);
+                    gps_arr.push([gpsPoint['lat'], gpsPoint['lng']]);
+                    pixel_point = map.latLngToContainerPoint(gpsPoint);
+                    pixel_arr.push([pixel_point['x'], pixel_point['y']]);
+                });
+
+                console.log("GPS:");
+                console.log(gps_arr);
+                console.log("Pixel:");
+                console.log(pixel_arr);
+
+                var meter_pixel_ratio = 1 / (156543.03392 * Math.cos(map.getCenter().lat * Math.PI / 180) /
+                                        Math.pow(2, map.getZoom()));
+
+                var pixel_data = {'shape': pixel_arr, 'meter_pixel_ratio': meter_pixel_ratio};
+
+                self.QTgetPixelShape(JSON.stringify(pixel_data));
+            } else {
+                console.log('No drawedPolygon available');
+                console.log(drawedPolygon);
+                removeLoadingModal();
+            }
+        }
+
+        function centerOnShape() {
+            if (drawedPolygon) {
+                console.log('centerOnShape')
+                map.setView(drawedPolygon.getBounds().getCenter(), map.getZoom());
+            } else {
+                console.log('No drawedPolygon available');
+                console.log(drawedPolygon);
+            }
+        }
+
+        function clearGeneratedPaths() {
+            if(drawedPolygons !== 'undefined' && drawedPolygons.length > 0){
+                while(drawedPolygons.length){
+                    var elem = drawedPolygons.pop();
+                    map.removeLayer(elem);
+                }
+
+                setPathLengthMet(0);
+                updateCoverageWidthInMetersBox(0, 0);
+            }
+        }
+
+        function createFlightPlans(fCoords) {
+            console.log(fCoords);
+            var jsonObj = JSON.parse(fCoords);
+            robotGPS = [];
+
+            if(jsonObj.length > 2){
+                var a = jsonObj[1];
+                var b = jsonObj[2];
+
+                gps_a = map.containerPointToLatLng(L.point(a[0], a[1]));
+                gps_b = map.containerPointToLatLng(L.point(b[0], b[1]));
+
+                updateCoverageWidthInMetersBox(gps_a.distanceTo(gps_b), jsonObj.length);
+            }
+
+            for (var i = 0; i < jsonObj.length; i++) {
+                pixel_pos = jsonObj[i]
+                gps_coord = map.containerPointToLatLng(L.point(pixel_pos[0], pixel_pos[1]));
+                robotGPS.push(gps_coord);
+
+                var circle_vertex = L.circle(gps_coord, 0.2, {
+                    color: colorArray[2]
+                });
+                circle_vertex.addTo(map);
+
+                drawedPolygons.push(circle_vertex);
+            }
+
+            var polyline = L.polyline(robotGPS, {
+                color: colorArray[0],
+                smoothFactor: 5,
+                weight: 3,
+                opacity: 0.5
+            });
+
+            polyline.addTo(map);
+            drawedPolygons.push(polyline);
+
+            setPathLengthMet(polyline.getDistance());
+
+            console.log(robotGPS);
+            self.QTgetGPSPath(JSON.stringify(robotGPS));
+        }
+
+        window.onload = function(e) {
+            var mapMsg = document.getElementById('map-loading-msg');
+            mapMsg.style.display = 'none';
+        };
+    </script>
+</body>
+
+</html>
