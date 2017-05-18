@@ -6,7 +6,9 @@ import getopt
 from PIL import Image, ImageDraw, ImageFont
 from math import sqrt
 
+
 class TspSolver(object):
+
     def __init__(self, coords, verbose=False, max_iterations=100, move_operator='reversed_sections', start_temp=None, alpha=None):
         self.out_file_name = None
         self.max_iterations = max_iterations
@@ -44,6 +46,62 @@ class TspSolver(object):
         return best
 
     @staticmethod
+    def hillclimb(init_function, move_operator, objective_function, max_evaluations):
+        '''
+        hillclimb until either max_evaluations is reached or we are at a local optima
+        '''
+        best = init_function()
+        best_score = objective_function(best)
+
+        num_evaluations = 1
+
+        print 'hillclimb started: score=%f', best_score
+
+        while num_evaluations < max_evaluations:
+            # examine moves around our current position
+            move_made = False
+            for next in move_operator(best):
+                if num_evaluations >= max_evaluations:
+                    break
+
+                # see if this move is better than the current
+                next_score = objective_function(next)
+                num_evaluations += 1
+                if next_score > best_score:
+                    best = next
+                    best_score = next_score
+                    move_made = True
+                    break  # depth first search
+
+            if not move_made:
+                break  # we couldn't find a better move (must be at a local maximum)
+
+        print 'hillclimb finished: num_evaluations=%d, best_score=%f', num_evaluations, best_score
+        return num_evaluations, best_score, best
+
+    @staticmethod
+    def hillclimb_and_restart(init_function, move_operator, objective_function, max_evaluations):
+        '''
+        repeatedly hillclimb until max_evaluations is reached
+        '''
+        best = None
+        best_score = 0
+
+        num_evaluations = 0
+        while num_evaluations < max_evaluations:
+            remaining_evaluations = max_evaluations - num_evaluations
+
+            print '(re)starting hillclimb %d/%d remaining', remaining_evaluations, max_evaluations
+            evaluated, score, found = TspSolver.hillclimb(init_function, move_operator, objective_function, remaining_evaluations)
+
+            num_evaluations += evaluated
+            if score > best_score or best is None:
+                best_score = score
+                best = found
+
+        return num_evaluations, best_score, best
+
+    @staticmethod
     def rand_seq(size):
         '''generates values in random order
         equivalent to using shuffle in random,
@@ -69,7 +127,7 @@ class TspSolver(object):
     @staticmethod
     def reversed_sections(tour):
         '''generator to return all possible variations where the section between two cities are swapped'''
-        for i,j in TspSolver.all_pairs(len(tour)):
+        for i, j in TspSolver.all_pairs(len(tour)):
             if i != j:
                 copy=tour[:]
                 if i < j:
@@ -83,7 +141,7 @@ class TspSolver(object):
     @staticmethod
     def swapped_cities(tour):
         '''generator to create all possible variations where two cities have been swapped'''
-        for i,j in all_pairs(len(tour)):
+        for i,j in TspSolver.all_pairs(len(tour)):
             if i < j:
                 copy=tour[:]
                 copy[i],copy[j]=tour[j],tour[i]
@@ -154,10 +212,10 @@ class TspSolver(object):
        return tour
 
     @staticmethod
-    def run_hillclimb(init_function,move_operator,objective_function,max_iterations):
-        from hillclimb import hillclimb_and_restart
-        iterations,score,best=hillclimb_and_restart(init_function,move_operator,objective_function,max_iterations)
-        return iterations,score,best
+    def run_hillclimb(init_function, move_operator, objective_function, max_iterations):
+        iterations, score, best = TspSolver.hillclimb_and_restart(init_function, move_operator,
+                                                                  objective_function, max_iterations)
+        return iterations, score, best
 
 
 if __name__ == "__main__":

@@ -2,8 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdfff0f2-9ffe-40d4-853f-5453824e5af1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sim/cover_hexagon.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sim/hexagon_lawnmower.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/hex_draw_wplist.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sim/buttons.py" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/sim/background.png" afterPath="$PROJECT_DIR$/sim/scripts/background.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/sim/background_base.png" afterPath="$PROJECT_DIR$/sim/scripts/background_base.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/sim/np_background_generator.py" afterPath="$PROJECT_DIR$/sim/scripts/np_background_generator.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/layout.py" afterPath="$PROJECT_DIR$/layout.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/layout.ui" afterPath="$PROJECT_DIR$/layout.ui" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/map_template.html" afterPath="$PROJECT_DIR$/map_template.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sim/tsp_solver.py" afterPath="$PROJECT_DIR$/sim/tsp_solver.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/hex_generator_point_draw.py" afterPath="$PROJECT_DIR$/tests/hex_generator_point_draw.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,76 +26,70 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="maza_generator_test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/maza_generator_test.py">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1460">
-              <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+            <state relative-caret-position="145">
+              <caret line="324" column="23" lean-forward="false" selection-start-line="324" selection-start-column="8" selection-end-line="324" selection-end-column="23" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#19#28#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="0">
-                <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                <folding />
-              </first_editor>
-              <second_editor />
+      <file leaf-file-name="map_template.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/map_template.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="501">
+              <caret line="411" column="59" lean-forward="false" selection-start-line="411" selection-start-column="48" selection-end-line="411" selection-end-column="59" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hex_generator_test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/hex_generator_test.py">
+      <file leaf-file-name="cover_hexagon.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sim/cover_hexagon.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="150" column="0" lean-forward="true" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
+            <state relative-caret-position="326">
+              <caret line="113" column="41" lean-forward="true" selection-start-line="113" selection-start-column="41" selection-end-line="113" selection-end-column="41" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="graph.py" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/lib/python2.7/dist-packages/networkx/classes/graph.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="215">
+              <caret line="1083" column="0" lean-forward="false" selection-start-line="1083" selection-start-column="0" selection-end-line="1083" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hexagon_lawnmower.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sim/hexagon_lawnmower.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="36" column="24" lean-forward="true" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-                <marker date="1494385350875" expanded="true" signature="135:167" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tsp_solver.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/sim/tsp_solver.py">
+      <file leaf-file-name="maza_generator_1_meter.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/maza_generator_1_meter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+            <state relative-caret-position="410">
+              <caret line="137" column="35" lean-forward="true" selection-start-line="122" selection-start-column="8" selection-end-line="137" selection-end-column="35" />
               <folding>
-                <element signature="e#19#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tsp.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sim/tsp.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#19#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="hex_generator_point_draw.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/hex_generator_point_draw.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="39" column="1" lean-forward="false" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
-              <folding>
-                <element signature="e#23#74#0" expanded="true" />
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -102,7 +108,22 @@
     <findStrings>
       <find>loadHTMLTemplate</find>
       <find>HexagonCover</find>
+      <find>sendShapeToQT</find>
       <find>point_inside_polygon</find>
+      <find>hillcl</find>
+      <find>run_hillclimb</find>
+      <find>run_kmeans</find>
+      <find>HexagonLawnmower</find>
+      <find>createFlightPlans</find>
+      <find>intersecting_hex</find>
+      <find>meter_pixel_ratio</find>
+      <find>Hexagon positions</find>
+      <find>HexDrawedPolygons</find>
+      <find>hexCoords</find>
+      <find>nx</find>
+      <find>hexRobotGPS</find>
+      <find>path_hex_gps_json</find>
+      <find>QTgetHexGPSPath</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -111,16 +132,25 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/hex_generator_new/hex_generator_point_draw.py" />
         <option value="$PROJECT_DIR$/hex_generator_new/hex_generator_test.py" />
+        <option value="$PROJECT_DIR$/hexagon_cover.py" />
+        <option value="$PROJECT_DIR$/sim/hexagon_cover.py" />
+        <option value="$PROJECT_DIR$/sim/tsp_solver.py" />
+        <option value="$PROJECT_DIR$/tests/hex_draw_wplist.py" />
+        <option value="$PROJECT_DIR$/tests/hex_generator_point_draw.py" />
+        <option value="$PROJECT_DIR$/sim/cover_hexagon.py" />
+        <option value="$PROJECT_DIR$/sim/hexagon_lawnmower.py" />
+        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/map_template.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="-1" />
     <option name="y" value="24" />
-    <option name="width" value="1920" />
-    <option name="height" value="1032" />
+    <option name="width" value="1922" />
+    <option name="height" value="1033" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -138,6 +168,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -178,9 +209,26 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DroneMagneticMapGeneratorPy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DroneMagneticMapGeneratorPy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -188,11 +236,14 @@
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Python" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/hex_generator_new" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests" />
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/sim/scripts" />
+      <recent name="$PROJECT_DIR$/sim" />
+      <recent name="$PROJECT_DIR$/hex_generator_new" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -207,74 +258,74 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.hex_generator_test">
-    <configuration default="false" name="maza_generator_1_meter" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.cover_hexagon">
+    <configuration default="false" name="tsp_solver" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/sim" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="DroneMagneticMapGeneratorPy" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/hex_generator_new/maza_generator_1_meter.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sim/tsp_solver.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="maza_generator_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="hillclimb" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/sim" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="DroneMagneticMapGeneratorPy" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/hex_generator_new/maza_generator_test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sim/hillclimb.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="hex_generator_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="cover_hexagon" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/hex_generator_new" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/sim" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="DroneMagneticMapGeneratorPy" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/hex_generator_new/hex_generator_test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sim/cover_hexagon.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="test_graph" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="hex_draw_wplist" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="DroneMagneticMapGeneratorPy" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_graph.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/hex_draw_wplist.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -287,12 +338,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/hex_generator_new" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="DroneMagneticMapGeneratorPy" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/hex_generator_new/hex_generator_point_draw.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/hex_generator_point_draw.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -364,19 +415,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.maza_generator_1_meter" />
-      <item index="1" class="java.lang.String" itemvalue="Python.maza_generator_test" />
-      <item index="2" class="java.lang.String" itemvalue="Python.hex_generator_test" />
-      <item index="3" class="java.lang.String" itemvalue="Python.test_graph" />
+      <item index="0" class="java.lang.String" itemvalue="Python.tsp_solver" />
+      <item index="1" class="java.lang.String" itemvalue="Python.hillclimb" />
+      <item index="2" class="java.lang.String" itemvalue="Python.cover_hexagon" />
+      <item index="3" class="java.lang.String" itemvalue="Python.hex_draw_wplist" />
       <item index="4" class="java.lang.String" itemvalue="Python.hex_generator_point_draw" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.hex_generator_test" />
-        <item index="1" class="java.lang.String" itemvalue="Python.maza_generator_test" />
-        <item index="2" class="java.lang.String" itemvalue="Python.hex_generator_point_draw" />
-        <item index="3" class="java.lang.String" itemvalue="Python.test_graph" />
-        <item index="4" class="java.lang.String" itemvalue="Python.maza_generator_1_meter" />
+        <item index="0" class="java.lang.String" itemvalue="Python.cover_hexagon" />
+        <item index="1" class="java.lang.String" itemvalue="Python.hex_generator_point_draw" />
+        <item index="2" class="java.lang.String" itemvalue="Python.hex_draw_wplist" />
+        <item index="3" class="java.lang.String" itemvalue="Python.hillclimb" />
+        <item index="4" class="java.lang.String" itemvalue="Python.tsp_solver" />
       </list>
     </recent_temporary>
   </component>
@@ -394,19 +445,18 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="24" width="1920" height="1032" extended-state="0" />
+    <frame x="-1" y="24" width="1922" height="1033" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973932" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17760417" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32901832" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27400216" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27370688" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.399137" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -414,6 +464,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901832" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -421,77 +472,52 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/map_template.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="69" column="54" lean-forward="false" selection-start-line="69" selection-start-column="54" selection-end-line="69" selection-end-column="54" />
+        <state relative-caret-position="6280">
+          <caret line="314" column="13" lean-forward="false" selection-start-line="314" selection-start-column="13" selection-end-line="314" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/maza_generator_1_meter.py">
+    <entry file="file://$PROJECT_DIR$/sim/cover_polygon.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1680">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="660">
+          <caret line="40" column="16" lean-forward="false" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
           <folding>
-            <element signature="e#0#9#0" expanded="false" />
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hex_generator.py">
+    <entry file="file://$PROJECT_DIR$/sim/cover_hexagon.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mav.parm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_graph.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="195" column="43" lean-forward="true" selection-start-line="195" selection-start-column="43" selection-end-line="195" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/maza_generator_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1460">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        <state relative-caret-position="3660">
+          <caret line="200" column="43" lean-forward="false" selection-start-line="200" selection-start-column="25" selection-end-line="200" selection-end-column="43" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/tests/hex_draw_wplist.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="940">
+          <caret line="56" column="54" lean-forward="false" selection-start-line="56" selection-start-column="54" selection-end-line="56" selection-end-column="54" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/hex_generator_point_draw.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="39" column="1" lean-forward="false" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
+        <state relative-caret-position="580">
+          <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding>
             <element signature="e#23#74#0" expanded="true" />
           </folding>
@@ -500,40 +526,381 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/hex_generator_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="150" column="0" lean-forward="true" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
+        <state relative-caret-position="3320">
+          <caret line="171" column="85" lean-forward="false" selection-start-line="171" selection-start-column="13" selection-end-line="171" selection-end-column="85" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-            <marker date="1494385350875" expanded="true" signature="135:167" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/hexagon_lawnmower.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1480">
+          <caret line="78" column="9" lean-forward="false" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sim/tsp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="4220">
+          <caret line="215" column="0" lean-forward="false" selection-start-line="215" selection-start-column="0" selection-end-line="216" selection-end-column="10" />
           <folding>
             <element signature="e#19#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/tsp_solver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2500">
+          <caret line="129" column="15" lean-forward="false" selection-start-line="129" selection-start-column="15" selection-end-line="129" selection-end-column="15" />
+          <folding>
+            <element signature="e#19#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5880">
+          <caret line="306" column="8" lean-forward="false" selection-start-line="306" selection-start-column="8" selection-end-line="306" selection-end-column="8" />
+          <folding>
+            <element signature="e#19#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/map_template.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="7780">
+          <caret line="389" column="59" lean-forward="true" selection-start-line="389" selection-start-column="59" selection-end-line="389" selection-end-column="59" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/cover_polygon.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="11" column="105" lean-forward="true" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="105" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/cover_hexagon.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4340">
+          <caret line="234" column="63" lean-forward="false" selection-start-line="234" selection-start-column="53" selection-end-line="234" selection-end-column="63" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/hex_generator_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3320">
+          <caret line="171" column="85" lean-forward="true" selection-start-line="171" selection-start-column="13" selection-end-line="171" selection-end-column="85" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/hexagon_lawnmower.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="24" column="20" lean-forward="false" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/scripts/kmeans_toursplit_textmode.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/tsp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4220">
+          <caret line="215" column="0" lean-forward="false" selection-start-line="215" selection-start-column="0" selection-end-line="216" selection-end-column="10" />
+          <folding>
+            <element signature="e#19#32#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sim/tsp_solver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state relative-caret-position="2500">
+          <caret line="129" column="15" lean-forward="false" selection-start-line="129" selection-start-column="15" selection-end-line="129" selection-end-column="15" />
           <folding>
             <element signature="e#19#32#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/hex_draw_wplist.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="860">
+          <caret line="52" column="35" lean-forward="true" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4940">
+          <caret line="258" column="51" lean-forward="false" selection-start-line="258" selection-start-column="51" selection-end-line="258" selection-end-column="51" />
+          <folding>
+            <element signature="e#19#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/cover_polygon.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="18" lean-forward="true" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/hexagon_lawnmower.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="21" column="17" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/scripts/kmeans_toursplit_textmode.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2420">
+          <caret line="129" column="44" lean-forward="false" selection-start-line="129" selection-start-column="27" selection-end-line="129" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/tsp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#19#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/tsp_solver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4120">
+          <caret line="210" column="27" lean-forward="true" selection-start-line="210" selection-start-column="27" selection-end-line="210" selection-end-column="27" />
+          <folding>
+            <element signature="e#19#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/cover_hexagon.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3580">
+          <caret line="179" column="44" lean-forward="false" selection-start-line="179" selection-start-column="44" selection-end-line="179" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hex_generator.py" />
+    <entry file="file://$PROJECT_DIR$/mav.parm" />
+    <entry file="file://$PROJECT_DIR$/test_graph.py" />
+    <entry file="file://$PROJECT_DIR$/tests/maza_generator_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1460">
+          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/scripts/background.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/scripts/background_base.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="18" column="39" lean-forward="true" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/hillclimb.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="54" column="44" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="54" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/scripts/kmeans_segment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/scripts/np_background_generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/scripts/kmeans_toursplit_textmode.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/scripts/buttons.py" />
+    <entry file="file://$PROJECT_DIR$/tests/hex_draw_wplist.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="56" column="54" lean-forward="false" selection-start-line="56" selection-start-column="54" selection-end-line="56" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/hex_generator_point_draw.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="760">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding>
+            <element signature="e#23#74#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/hex_generator_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2148">
+          <caret line="171" column="85" lean-forward="false" selection-start-line="171" selection-start-column="13" selection-end-line="171" selection-end-column="85" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/cover_polygon.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-100">
+          <caret line="40" column="16" lean-forward="false" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/tsp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="832">
+          <caret line="215" column="0" lean-forward="false" selection-start-line="215" selection-start-column="0" selection-end-line="216" selection-end-column="10" />
+          <folding>
+            <element signature="e#19#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/tsp_solver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="832">
+          <caret line="129" column="15" lean-forward="false" selection-start-line="129" selection-start-column="15" selection-end-line="129" selection-end-column="15" />
+          <folding>
+            <element signature="e#19#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/networkx/classes/graph.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="1083" column="0" lean-forward="false" selection-start-line="1083" selection-start-column="0" selection-end-line="1083" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/maza_generator_1_meter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="137" column="35" lean-forward="true" selection-start-line="122" selection-start-column="8" selection-end-line="137" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/hexagon_lawnmower.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="36" column="24" lean-forward="true" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim/cover_hexagon.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="113" column="41" lean-forward="true" selection-start-line="113" selection-start-column="41" selection-end-line="113" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="324" column="23" lean-forward="false" selection-start-line="324" selection-start-column="8" selection-end-line="324" selection-end-column="23" />
+          <folding>
+            <element signature="e#19#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/map_template.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="501">
+          <caret line="411" column="59" lean-forward="false" selection-start-line="411" selection-start-column="48" selection-end-line="411" selection-end-column="59" />
+          <folding />
         </state>
       </provider>
     </entry>

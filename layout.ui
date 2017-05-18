@@ -103,7 +103,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QSpinBox" name="spinRobotNumber">
+               <widget class="QSpinBox" name="spinHexRobotNumber">
                 <property name="minimum">
                  <number>0</number>
                 </property>
@@ -111,7 +111,7 @@
                  <number>10</number>
                 </property>
                 <property name="value">
-                 <number>0</number>
+                 <number>2</number>
                 </property>
                </widget>
               </item>
@@ -149,6 +149,53 @@
                 </property>
                 <property name="value">
                  <number>15</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_12">
+                <property name="text">
+                 <string>Radius (mts)</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="spinHexRadius">
+                <property name="minimum">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+                <property name="value">
+                 <number>8</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_13">
+                <property name="text">
+                 <string>Cover width (mts)</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="spinHexWidthSize">
+                <property name="minimum">
+                 <number>1</number>
+                </property>
+                <property name="singleStep">
+                 <number>1</number>
+                </property>
+                <property name="value">
+                 <number>2</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnHexToggleMaps">
+                <property name="text">
+                 <string>Toggle hex routes</string>
                 </property>
                </widget>
               </item>
@@ -231,7 +278,7 @@
               <item>
                <widget class="QLabel" name="label_2">
                 <property name="text">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cover line width&lt;br/&gt;In meters&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cover width (mts)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                </widget>
               </item>

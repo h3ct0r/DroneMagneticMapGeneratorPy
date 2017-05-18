@@ -179,6 +179,10 @@
         var generatedPoly = undefined;
         var robotGPS = undefined;
 
+        var hexDrawedPolygons = undefined;
+        var hexRobotGPS = undefined;
+        var hexCoords = undefined;
+
         var polyline_options = {
             color: '#000'
         };
@@ -212,12 +216,15 @@
             drawControlFull.removeFrom(map);
             drawControlEditOnly.addTo(map);
             setShapeArea(L.GeometryUtil.geodesicArea(layer.getLatLngs()));
+
+            self.QTsetRegionOfInterestGPSShape(JSON.stringify(layer.getLatLngs()));
         });
 
         map.on('draw:edited', function(e) {
             e.layers.eachLayer(function(layer) {
                 drawedPolygon = layer;
                 setShapeArea(L.GeometryUtil.geodesicArea(layer.getLatLngs()));
+                self.QTsetRegionOfInterestGPSShape(JSON.stringify(layer.getLatLngs()));
             });
         });
 
@@ -230,6 +237,14 @@
                 please generate a new shape';
             };
         });
+
+        function setROIGPS(gps_list){
+            clearGeneratedPaths()
+            map.removeLayer(drawedPolygon);
+            drawedPolygon = undefined;
+
+
+        }
 
         function setShapeArea(a){
             document.getElementById('leaflet-shape-info').innerHTML = 'Shape area: ' + (a).toFixed(2) + ' mts2';
@@ -302,6 +317,13 @@
                 setPathLengthMet(0);
                 updateCoverageWidthInMetersBox(0, 0);
             }
+
+            if(hexDrawedPolygons !== 'undefined' && hexDrawedPolygons.length > 0){
+                 while(hexDrawedPolygons.length){
+                    var elem = hexDrawedPolygons.pop();
+                    map.removeLayer(elem);
+                }
+            }
         }
 
         function createFlightPlans(fCoords) {
@@ -346,6 +368,73 @@
 
             console.log(robotGPS);
             self.QTgetGPSPath(JSON.stringify(robotGPS));
+        }
+
+        function createHexagonFlightPlans(fCoords) {
+            hexCoords = fCoords;
+            console.log(fCoords);
+            hexJsonObj = JSON.parse(fCoords);
+            
+            hexDrawedPolygons = [];
+            hexRobotGPS = {};
+
+            var hColor = colorArray.slice().reverse();
+
+            for(k in hexJsonObj){
+                var v = hexJsonObj[k];
+                hexRobotGPS[k] = [];
+                for (var i = 0; i < v.length; i++) {
+                    pixel_pos = v[i];
+                    gps_coord = map.containerPointToLatLng(L.point(pixel_pos[0], pixel_pos[1]));
+                    hexRobotGPS[k].push(gps_coord);
+                }
+
+                drawedPolygons.push(L.circle(hexRobotGPS[k][0], 1, {
+                    color: '#00FF00'
+                }).addTo(map));
+
+                drawedPolygons.push(L.circle(hexRobotGPS[k][hexRobotGPS[k].length-1], 1, {
+                    color: '#FF0000'
+                }).addTo(map));
+
+                var polyline = L.polyline(hexRobotGPS[k], {
+                    color: hColor[k],
+                    smoothFactor: 5,
+                    weight: 3,
+                    opacity: 0.5
+                });
+
+                polyline.addTo(map);
+                hexDrawedPolygons.push(polyline);
+            }
+
+            console.log(hexRobotGPS);
+            self.QTgetHexGPSPath(JSON.stringify(hexRobotGPS));
+        }
+
+        function toggleHexagonMaps(){
+            if(hexDrawedPolygons !== 'undefined' && hexDrawedPolygons.length > 0){
+                 while(hexDrawedPolygons.length){
+                    var elem = hexDrawedPolygons.pop();
+                    map.removeLayer(elem);
+                }
+            }
+            else{
+                var keys = Object.keys(hexRobotGPS);
+                var hColor = colorArray.slice().reverse();
+                for(k in keys){
+                    var v = hexRobotGPS[k];
+                    var polyline = L.polyline(v, {
+                        color: hColor[k],
+                        smoothFactor: 5,
+                        weight: 3,
+                        opacity: 0.5
+                    });
+
+                    polyline.addTo(map);
+                    hexDrawedPolygons.push(polyline);
+                }
+            }
         }
 
         window.onload = function(e) {
