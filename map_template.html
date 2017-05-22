@@ -119,8 +119,8 @@
 
         var map = new L.Map('map', {
             layers: [tileLayer],
-            //center: new L.LatLng(-19.8695912, -43.9583309),
-            center: new L.LatLng(-20.39553, -43.51259),
+            center: new L.LatLng(-19.8695912, -43.9583309),
+            //center: new L.LatLng(-20.39553, -43.51259), // UFOP field ouro preto
             zoom: 19,
             scrollWheelZoom: false,
             touchZoom: false,
@@ -179,9 +179,9 @@
         var generatedPoly = undefined;
         var robotGPS = undefined;
 
-        var hexDrawedPolygons = undefined;
-        var hexRobotGPS = undefined;
-        var hexCoords = undefined;
+        var hexDrawedPolygons = [];
+        var hexRobotGPS = {};
+        var hexCoords = [];
 
         var polyline_options = {
             color: '#000'
@@ -239,11 +239,23 @@
         });
 
         function setROIGPS(gps_list){
+            var jsonObj = JSON.parse(gps_list);
             clearGeneratedPaths()
-            map.removeLayer(drawedPolygon);
-            drawedPolygon = undefined;
 
+            if(drawedPolygon){
+                map.removeLayer(drawedPolygon);
+            }
 
+            console.log(jsonObj);
+
+            drawedPolygon = L.polygon(jsonObj, {
+                color: '#FE57A1'
+            });
+            drawedPolygon.addTo(featureGroup);
+            drawControlFull.removeFrom(map);
+            drawControlEditOnly.addTo(map);
+            setShapeArea(L.GeometryUtil.geodesicArea(drawedPolygon.getLatLngs()));
+            self.QTsetRegionOfInterestGPSShape(JSON.stringify(drawedPolygon.getLatLngs()));
         }
 
         function setShapeArea(a){

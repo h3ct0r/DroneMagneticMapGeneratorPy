@@ -44,7 +44,7 @@ class MainUi(QtGui.QMainWindow):
         self.ui.spinWidthSize.valueChanged.connect(self.paramsChanged)
 
         self.connect(self.ui.actionSave_polygon_shape, SIGNAL("triggered()"), self.savePolyShapeToFile)
-        self.connect(self.ui.actionLoad_polygon_shape, SIGNAL("triggered()"), self.loadPolyShapeToFile)
+        self.connect(self.ui.actionLoad_polygon_shape, SIGNAL("triggered()"), self.loadPolyShapeFromFile)
         self.connect(self.ui.actionExit_program, SIGNAL("triggered()"), self.close)
         self.connect(self.ui.actionReload_Map, SIGNAL("triggered()"), self.loadHTMLTemplate)
         self.connect(self.ui.actionExport_Route, SIGNAL("triggered()"), self.exportGPSroute)
@@ -66,7 +66,13 @@ class MainUi(QtGui.QMainWindow):
                 file.write(json.dumps(self.roi_gps_json, ensure_ascii=True))
         pass
 
-    def loadPolyShapeToFile(self):
+    def loadPolyShapeFromFile(self):
+        with open(os.path.expanduser('~') + '/.dronemapgenerator.map') as map_file:
+            data = json.load(map_file)
+
+        json_data = json.dumps(data)
+        print 'json_data', json_data
+        self.ui.webView.page().mainFrame().evaluateJavaScript("setROIGPS(\'{0}\');".format(json.dumps(data)))
         self.ui.labelStatus.setText("Polygon shape loaded... " + str(datetime.datetime.now()))
         pass
 

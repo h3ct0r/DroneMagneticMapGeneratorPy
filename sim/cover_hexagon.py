@@ -243,9 +243,10 @@ class CoverHexagon(object):
                 y = starty + ((hex_h / 2) * (j))
                 p = Point(x, y)
                 p = affinity.rotate(p, degs, origin=poly_box.centroid, use_radians=False)
-                h = HexagonLawnmower([p.coords[0][0], p.coords[0][1]], self.hex_radius, self.lawnmower_width)
+                h = HexagonLawnmower([p.coords[0][0], p.coords[0][1]], self.hex_radius, self.lawnmower_width,
+                                     angle=self.theta)
 
-                if self.poly_obj.contains(h.getPolyObj()) or self.poly_obj.intersects(h.getPolyObj()):
+                if self.poly_obj.contains(p) or self.poly_obj.intersects(p):
                     self.intersecting_hexes.append(h)
 
         print 'Hexagon intersecting_hexes:', len(self.intersecting_hexes), self.intersecting_hexes
