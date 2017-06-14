@@ -136,6 +136,7 @@ class MainUi(QtGui.QMainWindow):
             self.ui.labelStatus.setText("Error: No route available to export, generate one route first... "
                                         + str(datetime.datetime.now()))
 
+        hex_altitude_multiplicator = 0 # at every hex drone add some meters of altitude
         for k, v in routes.items():
             filename = k + '.txt'
             filepath = os.path.join(directory, filename)
@@ -160,14 +161,22 @@ class MainUi(QtGui.QMainWindow):
             p_counter = 0
             gps_export_str = []
             reach_radius = 1
-            altitude_mts = self.ui.spinAltitude.value()
-            time_to_wait = self.ui.spinSeconds.value()
             desired_angle = 0
-
             wp_alt_type = 3
-            wp_alt_combo_text = self.ui.comboWPALT.currentText()
-            if wp_alt_combo_text == "Follow Terrain":
-                wp_alt_type = 10
+
+            if k is 'magnetic':
+                altitude_mts = self.ui.spinAltitude.value()
+                time_to_wait = self.ui.spinSeconds.value()
+                desired_angle = self.ui.spinAngle.value()
+                wp_alt_combo_text = self.ui.comboWPALT.currentText()
+                if wp_alt_combo_text == "Follow Terrain":
+                    wp_alt_type = 10
+            else:
+                altitude_mts = self.ui.spinHexAltitude.value() + hex_altitude_multiplicator
+                time_to_wait = 0
+                desired_angle = self.ui.spinHexAngle.value()
+                if not (0 <= desired_angle <= 360):
+                    desired_angle = self.ui.spinAngle.value()
 
             print "WP alt type:", wp_alt_type, wp_alt_combo_text
 
@@ -240,6 +249,9 @@ class MainUi(QtGui.QMainWindow):
             print "Route exported to ", filepath
             msg = "Route exported to " + filepath
             self.ui.labelStatus.setText(msg + " " + str(datetime.datetime.now()))
+
+            if k is not 'magnetic':
+                hex_altitude_multiplicator += self.ui.spinHexAltMult.value()
 
         pass
 
