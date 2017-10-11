@@ -168,15 +168,17 @@ class MainUi(QtGui.QMainWindow):
                 altitude_mts = self.ui.spinAltitude.value()
                 time_to_wait = self.ui.spinSeconds.value()
                 desired_angle = self.ui.spinAngle.value()
-                wp_alt_combo_text = self.ui.comboWPALT.currentText()
-                if wp_alt_combo_text == "Follow Terrain":
-                    wp_alt_type = 10
+
             else:
                 altitude_mts = self.ui.spinHexAltitude.value() + hex_altitude_multiplicator
                 time_to_wait = 0
                 desired_angle = self.ui.spinHexAngle.value()
                 if not (0 <= desired_angle <= 360):
                     desired_angle = self.ui.spinAngle.value()
+
+            wp_alt_combo_text = self.ui.comboWPALT.currentText()
+            if wp_alt_combo_text == "Follow Terrain":
+                wp_alt_type = 10
 
             print "WP alt type:", wp_alt_type, wp_alt_combo_text
 

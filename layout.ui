@@ -197,15 +197,12 @@
                </widget>
               </item>
               <item>
-               <widget class="QSpinBox" name="spinHexWidthSize">
+               <widget class="QDoubleSpinBox" name="spinHexWidthSize">
                 <property name="minimum">
-                 <number>1</number>
+                 <double>1.000000000000000</double>
                 </property>
                 <property name="singleStep">
-                 <number>1</number>
-                </property>
-                <property name="value">
-                 <number>2</number>
+                 <double>0.500000000000000</double>
                 </property>
                </widget>
               </item>
@@ -487,7 +484,7 @@
      <x>0</x>
      <y>0</y>
      <width>1144</width>
-     <height>23</height>
+     <height>24</height>
     </rect>
    </property>
    <property name="nativeMenuBar">
