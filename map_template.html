@@ -119,7 +119,7 @@
 
         var map = new L.Map('map', {
             layers: [tileLayer],
-	        //center: new L.LatLng(-19.871831, -43.3973557), // mine
+	    //    center: new L.LatLng(-19.6511, -43.28366), // mine
             center: new L.LatLng(-19.8695912, -43.9583309), // UFMG upper field
             //center: new L.LatLng(-20.39553, -43.51259), // UFOP field ouro preto
             zoom: 19,
@@ -175,6 +175,7 @@
                             '#26FF71'   ];
 
         var featureGroup = L.featureGroup().addTo(map);
+        var drawedMarkers = []
         var drawedPolygons = [];
         var drawedPolygon = undefined;
         var generatedPoly = undefined;
@@ -339,6 +340,15 @@
             }
         }
 
+        function clearDrawedMarkers() {
+            if(drawedMarkers !== 'undefined' && drawedMarkers.length > 0){
+                 while(drawedMarkers.length){
+                    var elem = drawedMarkers.pop();
+                    map.removeLayer(elem);
+                }
+            }
+        }
+
         function createFlightPlans(fCoords) {
             console.log(fCoords);
             var jsonObj = JSON.parse(fCoords);
@@ -383,6 +393,21 @@
             self.QTgetGPSPath(JSON.stringify(robotGPS));
         }
 
+        function createSimplifiedFlightPlans(fCoords) {
+            console.log(fCoords);
+            var jsonObj = JSON.parse(fCoords);
+            robotGPS = [];
+
+            for (var i = 0; i < jsonObj.length; i++) {
+                pixel_pos = jsonObj[i]
+                gps_coord = map.containerPointToLatLng(L.point(pixel_pos[0], pixel_pos[1]));
+                robotGPS.push(gps_coord);
+            }
+
+            console.log(robotGPS);
+            self.QTgetSimplifiedGPSPath(JSON.stringify(robotGPS));
+        }
+
         function createHexagonFlightPlans(fCoords) {
             hexCoords = fCoords;
             console.log(fCoords);
@@ -425,6 +450,27 @@
             self.QTgetHexGPSPath(JSON.stringify(hexRobotGPS));
         }
 
+        function addDrawedMarkers(gpsCoords) {
+            console.log(gpsCoords);
+            gpsJsonObj = JSON.parse(gpsCoords);
+
+            for (var i=0, l=gpsJsonObj.length; i<l; i++) {
+                e = gpsJsonObj[i];
+                console.log(e);
+                marker = new L.Marker([e[0], e[1]],
+                    {
+                        icon: new L.DivIcon({
+                            className: 'my-div-icon',
+                            html: '<span style="background-color: white; font-size: 16px; font-weight:bold;">' + i + '</span>'
+                        })
+                    }
+                );
+
+                marker.addTo(map);
+                drawedMarkers.push(marker);
+            }
+        }
+
         function toggleHexagonMaps(){
             if(hexDrawedPolygons !== 'undefined' && hexDrawedPolygons.length > 0){
                  while(hexDrawedPolygons.length){
@@ -448,6 +494,11 @@
                     hexDrawedPolygons.push(polyline);
                 }
             }
+        }
+
+        function panToGPS(lat, lon){
+            console.log("Pan to", lat, lon);
+            map.panTo(new L.LatLng(lat, lon));
         }
 
         window.onload = function(e) {

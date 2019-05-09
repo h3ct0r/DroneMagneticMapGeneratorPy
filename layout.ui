@@ -27,7 +27,7 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
-         <widget class="QWebView" name="webView" native="true">
+         <widget class="QWebView" name="webView">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
             <horstretch>0</horstretch>
@@ -37,7 +37,7 @@
           <property name="layoutDirection">
            <enum>Qt::LeftToRight</enum>
           </property>
-          <property name="url" stdset="0">
+          <property name="url">
            <url>
             <string>about:blank</string>
            </url>
@@ -111,7 +111,7 @@
                  <number>10</number>
                 </property>
                 <property name="value">
-                 <number>2</number>
+                 <number>0</number>
                 </property>
                </widget>
               </item>
@@ -125,13 +125,13 @@
               <item>
                <widget class="QSpinBox" name="spinHexAngle">
                 <property name="minimum">
-                 <number>-1</number>
+                 <number>0</number>
                 </property>
                 <property name="maximum">
-                 <number>359</number>
+                 <number>360</number>
                 </property>
                 <property name="value">
-                 <number>-1</number>
+                 <number>0</number>
                 </property>
                </widget>
               </item>
@@ -264,6 +264,52 @@
                </widget>
               </item>
               <item>
+               <widget class="QLabel" name="label_15">
+                <property name="text">
+                 <string>Drone angle</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="spinDroneAngle">
+                <property name="suffix">
+                 <string> degrees</string>
+                </property>
+                <property name="minimum">
+                 <number>-360</number>
+                </property>
+                <property name="maximum">
+                 <number>360</number>
+                </property>
+                <property name="value">
+                 <number>-23</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_16">
+                <property name="text">
+                 <string>Point spacement</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QDoubleSpinBox" name="doubleSpinPointSpacement">
+                <property name="suffix">
+                 <string> mts</string>
+                </property>
+                <property name="maximum">
+                 <double>20.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.500000000000000</double>
+                </property>
+                <property name="value">
+                 <double>1.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item>
                <widget class="QLabel" name="label_3">
                 <property name="text">
                  <string>Path angle</string>
@@ -297,21 +343,21 @@
                </widget>
               </item>
               <item>
-               <widget class="QSpinBox" name="spinWidthSize">
+               <widget class="QDoubleSpinBox" name="doubleSpinWidthSize">
                 <property name="suffix">
                  <string> mts</string>
                 </property>
                 <property name="minimum">
-                 <number>1</number>
+                 <double>1.000000000000000</double>
                 </property>
                 <property name="maximum">
-                 <number>80</number>
+                 <double>80.000000000000000</double>
                 </property>
                 <property name="singleStep">
-                 <number>1</number>
+                 <double>0.500000000000000</double>
                 </property>
                 <property name="value">
-                 <number>2</number>
+                 <double>2.000000000000000</double>
                 </property>
                </widget>
               </item>
@@ -323,21 +369,24 @@
                </widget>
               </item>
               <item>
-               <widget class="QSpinBox" name="spinAltitude">
-                <property name="suffix">
-                 <string> mts</string>
-                </property>
+               <widget class="QDoubleSpinBox" name="doubleSpinAltitude">
                 <property name="prefix">
                  <string/>
                 </property>
+                <property name="suffix">
+                 <string> mts</string>
+                </property>
                 <property name="minimum">
-                 <number>3</number>
+                 <double>0.500000000000000</double>
                 </property>
                 <property name="maximum">
-                 <number>200</number>
+                 <double>120.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.500000000000000</double>
                 </property>
                 <property name="value">
-                 <number>10</number>
+                 <double>1.000000000000000</double>
                 </property>
                </widget>
               </item>
@@ -484,7 +533,7 @@
      <x>0</x>
      <y>0</y>
      <width>1144</width>
-     <height>24</height>
+     <height>23</height>
     </rect>
    </property>
    <property name="nativeMenuBar">
@@ -496,6 +545,8 @@
     </property>
     <addaction name="actionSave_polygon_shape"/>
     <addaction name="actionLoad_polygon_shape"/>
+    <addaction name="actionAdd_GPS_markers_from_file"/>
+    <addaction name="actionClear_GPS_markers"/>
     <addaction name="actionExit_program"/>
    </widget>
    <widget class="QMenu" name="menuMap">
@@ -531,6 +582,16 @@
   <action name="actionExit_program">
    <property name="text">
     <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionAdd_GPS_markers_from_file">
+   <property name="text">
+    <string>Load GPS markers from file</string>
+   </property>
+  </action>
+  <action name="actionClear_GPS_markers">
+   <property name="text">
+    <string>Clear GPS markers</string>
    </property>
   </action>
  </widget>

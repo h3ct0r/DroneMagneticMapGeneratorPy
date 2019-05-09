@@ -15,7 +15,6 @@ import time
 import sim.cover_polygon
 import sim.cover_hexagon
 
-
 class WebPage(QtWebKit.QWebPage):
     def javaScriptConsoleMessage(self, msg, line, source):
         print '%s line %d: %s' % (source, line, msg)
@@ -41,22 +40,59 @@ class MainUi(QtGui.QMainWindow):
         self.ui.btnHexToggleMaps.clicked.connect(self.toggleMapsJS)
 
         self.ui.spinAngle.valueChanged.connect(self.paramsChanged)
-        self.ui.spinWidthSize.valueChanged.connect(self.paramsChanged)
+        self.ui.doubleSpinWidthSize.valueChanged.connect(self.paramsChanged)
+        self.ui.doubleSpinPointSpacement.valueChanged.connect(self.paramsChanged)
 
         self.connect(self.ui.actionSave_polygon_shape, SIGNAL("triggered()"), self.savePolyShapeToFile)
         self.connect(self.ui.actionLoad_polygon_shape, SIGNAL("triggered()"), self.loadPolyShapeFromFile)
+        self.connect(self.ui.actionAdd_GPS_markers_from_file, SIGNAL("triggered()"), self.loadGPSMarkersFromFile)
+        self.connect(self.ui.actionClear_GPS_markers, SIGNAL("triggered()"), self.clearGPSMarkers)
         self.connect(self.ui.actionExit_program, SIGNAL("triggered()"), self.close)
         self.connect(self.ui.actionReload_Map, SIGNAL("triggered()"), self.loadHTMLTemplate)
         self.connect(self.ui.actionExport_Route, SIGNAL("triggered()"), self.exportGPSroute)
 
         self.path_gps_json = None
+        self.path_simplified_gps_json = None
         self.path_hex_gps_json = None
         self.roi_gps_json = None
+
 
     def loadFinishedHtml(self):
         msg = "Map reloaded"
         print msg
         self.ui.labelStatus.setText(msg + " " + str(datetime.datetime.now()))
+        pass
+
+    def loadGPSMarkersFromFile(self):
+        self.ui.labelStatus.setText("Loading GPS markers from file... " + str(datetime.datetime.now()))
+
+        fileName = QtGui.QFileDialog.getOpenFileName(self, "Select a GPS file to load into markers", "", "")
+        if fileName:
+            print(fileName)
+
+            gps_list = []
+            with open(fileName) as f:
+                for line in f:
+                    e = line.split(',')
+                    gps_list.append((e[0].strip(), e[1].strip()))
+
+            if len(gps_list) > 0:
+                json_data = json.dumps(gps_list)
+                print 'json_data', json_data
+                print "gps_list[0][0], gps_list[0][1]", gps_list[0][0], gps_list[0][1]
+                self.ui.webView.page().mainFrame().evaluateJavaScript("addDrawedMarkers(\'{0}\');".format(json_data))
+                self.ui.webView.page().mainFrame().evaluateJavaScript("panToGPS(\'{0}\', \'{1}\');".format(
+                    gps_list[0][0], gps_list[0][1])
+                )
+            else:
+                self.ui.labelStatus.setText(
+                    "Error loading GPS file: no GPS locations at the selected file... " + str(datetime.datetime.now()))
+        else:
+            self.ui.labelStatus.setText("Error loading GPS file: no file selected... " + str(datetime.datetime.now()))
+
+    def clearGPSMarkers(self):
+        self.ui.labelStatus.setText("GPS markers cleared... " + str(datetime.datetime.now()))
+        self.ui.webView.page().mainFrame().evaluateJavaScript("clearDrawedMarkers();")
         pass
 
     def savePolyShapeToFile(self):
@@ -72,7 +108,7 @@ class MainUi(QtGui.QMainWindow):
 
         json_data = json.dumps(data)
         print 'json_data', json_data
-        self.ui.webView.page().mainFrame().evaluateJavaScript("setROIGPS(\'{0}\');".format(json.dumps(data)))
+        self.ui.webView.page().mainFrame().evaluateJavaScript("setROIGPS(\'{0}\');".format(json_data))
         self.ui.labelStatus.setText("Polygon shape loaded... " + str(datetime.datetime.now()))
         pass
 
@@ -96,6 +132,7 @@ class MainUi(QtGui.QMainWindow):
 
     def clearPaths(self):
         self.path_gps_json = None
+        self.path_simplified_gps_json = None
         self.addLoadingModal()
         self.ui.webView.page().mainFrame().evaluateJavaScript("clearGeneratedPaths();")
         self.removeLoadingModal()
@@ -121,6 +158,9 @@ class MainUi(QtGui.QMainWindow):
         routes = {}
         if self.path_gps_json:
             routes['magnetic'] = self.path_gps_json
+
+        if self.path_simplified_gps_json:
+            routes['magnetic_simplified'] = self.path_simplified_gps_json
 
         if self.path_hex_gps_json:
             for k, v in self.path_hex_gps_json.items():
@@ -156,7 +196,7 @@ class MainUi(QtGui.QMainWindow):
             # 9 : lon
             # 10 : altitude
 
-            base_srt = "{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t{7}\t{8}\t{9}\t{10}\t1"
+            base_srt = "{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t{7}\t{8}\t{9}\t{10:.2f}\t1"
 
             p_counter = 0
             gps_export_str = []
@@ -165,16 +205,15 @@ class MainUi(QtGui.QMainWindow):
             wp_alt_type = 3
 
             if k is 'magnetic':
-                altitude_mts = self.ui.spinAltitude.value()
+                altitude_mts = self.ui.doubleSpinAltitude.value()
                 time_to_wait = self.ui.spinSeconds.value()
-                desired_angle = self.ui.spinAngle.value()
+                desired_angle = self.ui.spinDroneAngle.value()
 
             else:
                 altitude_mts = self.ui.spinHexAltitude.value() + hex_altitude_multiplicator
                 time_to_wait = 0
-                desired_angle = self.ui.spinHexAngle.value()
                 if not (0 <= desired_angle <= 360):
-                    desired_angle = self.ui.spinAngle.value()
+                    desired_angle = self.ui.spinHexAngle.value()
 
             wp_alt_combo_text = self.ui.comboWPALT.currentText()
             if wp_alt_combo_text == "Follow Terrain":
@@ -265,7 +304,8 @@ class MainUi(QtGui.QMainWindow):
         #print type(data), data
 
         angle = self.ui.spinAngle.value()
-        line_width = self.ui.spinWidthSize.value()
+        line_width = self.ui.doubleSpinWidthSize.value()
+        point_spacement = self.ui.doubleSpinPointSpacement.value()
         shape = data['shape']
         wp_spacement_mode = self.ui.comboWPSequence.currentText()
 
@@ -273,8 +313,16 @@ class MainUi(QtGui.QMainWindow):
 
         c_polygon = sim.cover_polygon.CoverPolygon(shape, line_width, angle,
                                                    meter_pixel_ratio=data['meter_pixel_ratio'],
-                                                   spacement_mode=wp_spacement_mode)
+                                                   spacement_mode=wp_spacement_mode,
+                                                   point_spacement=point_spacement)
         lawnmower_path = c_polygon.get_lawnmower()
+
+        c_simp_polygon = sim.cover_polygon.CoverPolygon(shape, line_width, angle,
+                                                        meter_pixel_ratio=data['meter_pixel_ratio'],
+                                                        spacement_mode=wp_spacement_mode,
+                                                        point_spacement=point_spacement,
+                                                        path_with_minimized_points=True)
+        simplified_lawnmower_path = c_simp_polygon.get_lawnmower()
 
         hex_r = self.ui.spinHexRadius.value()
         robot_size = self.ui.spinHexRobotNumber.value()
@@ -291,16 +339,17 @@ class MainUi(QtGui.QMainWindow):
 
         #print "Pixel lawnmower path:", lawnmower_path
 
-        self.generateRouteFromPixel(lawnmower_path, hex_tours)
+        self.generateRouteFromPixel(lawnmower_path, hex_tours, simplified_lawnmower_path)
 
-    def generateRouteFromPixel(self, flight_plan, hex_tours):
+    def generateRouteFromPixel(self, flight_plan, hex_tours, simplified_flight_plan):
         msg = "Generating route from a pixel flight plan coordinates ..."
         self.ui.labelStatus.setText(msg + " " + str(datetime.datetime.now()))
 
         json_flight_plan = json.dumps(flight_plan)
-        #print "Json flight plan:", json_flight_plan
-
         self.ui.webView.page().mainFrame().evaluateJavaScript("createFlightPlans(\'{0}\');".format(json_flight_plan))
+
+        json_simplified_flight_plan = json.dumps(simplified_flight_plan)
+        self.ui.webView.page().mainFrame().evaluateJavaScript("createSimplifiedFlightPlans(\'{0}\');".format(json_simplified_flight_plan))
 
         msg = "Route generated..."
         self.ui.labelStatus.setText(msg + " " + str(datetime.datetime.now()))
@@ -339,6 +388,15 @@ class MainUi(QtGui.QMainWindow):
         #print type(data), data
 
         self.path_gps_json = data
+        pass
+
+    @pyqtSlot(str)
+    def QTgetSimplifiedGPSPath(self, gps_list):
+        print "QTgetGPSPath called"
+        self.path_simplified_gps_json = None
+
+        data = json.loads(str(gps_list))
+        self.path_simplified_gps_json = data
         pass
 
     @pyqtSlot(str)

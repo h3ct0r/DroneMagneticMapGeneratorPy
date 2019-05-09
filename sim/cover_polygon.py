@@ -9,13 +9,17 @@ import math_helper
 
 
 class CoverPolygon(object):
-    def __init__(self, vertices, lawnmower_width, angle, meter_pixel_ratio=1.0, spacement_mode='Normal'):
+    def __init__(self, vertices, lawnmower_width, angle, meter_pixel_ratio=1.0, spacement_mode='Normal',
+                 point_spacement=1.0, path_with_minimized_points=False):
+
         self.poly_obj = Polygon(vertices)
         self.vertices = list(self.poly_obj.convex_hull.exterior.coords)
 
+        self.path_with_minimized_points = path_with_minimized_points
         self.theta = angle
         self.spacement_mode = spacement_mode  # 'Spaced'
         self.lawnmower_width = lawnmower_width * meter_pixel_ratio
+        self.point_spacement = point_spacement * meter_pixel_ratio
         self.lawnmower_path = list(self.calc_lawnmower())
         pass
 
@@ -140,7 +144,11 @@ class CoverPolygon(object):
                             ).coords
                         )
 
-                    inter = math_helper.get_line_points(inter[0], inter[1], self.lawnmower_width)
+                    if not self.path_with_minimized_points:
+                        inter = math_helper.get_line_points(inter[0], inter[1], self.point_spacement)
+                    else:
+                        inter_tmp = [inter[0], inter[1]]
+                        inter = inter_tmp
 
                     if (i + j) % 2 == 0:
                         inter.reverse()
