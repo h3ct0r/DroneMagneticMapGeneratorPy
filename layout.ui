@@ -328,7 +328,7 @@
                  <number>360</number>
                 </property>
                 <property name="singleStep">
-                 <number>5</number>
+                 <number>2</number>
                 </property>
                 <property name="value">
                  <number>90</number>
@@ -386,7 +386,7 @@
                  <double>0.500000000000000</double>
                 </property>
                 <property name="value">
-                 <double>1.000000000000000</double>
+                 <double>1.500000000000000</double>
                 </property>
                </widget>
               </item>

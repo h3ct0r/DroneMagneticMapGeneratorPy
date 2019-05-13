@@ -178,10 +178,6 @@ class MainUi(QtGui.QMainWindow):
 
         hex_altitude_multiplicator = 0 # at every hex drone add some meters of altitude
         for k, v in routes.items():
-            filename = k + '.txt'
-            filepath = os.path.join(directory, filename)
-            print "Writting to file...", filepath, v
-
             header = "QGC WPL 110"
 
             # 0 : counter
@@ -204,16 +200,22 @@ class MainUi(QtGui.QMainWindow):
             desired_angle = 0
             wp_alt_type = 3
 
-            if k is 'magnetic':
+            if k in ['magnetic', 'magnetic_simplified']:
                 altitude_mts = self.ui.doubleSpinAltitude.value()
                 time_to_wait = self.ui.spinSeconds.value()
                 desired_angle = self.ui.spinDroneAngle.value()
+                line_width = self.ui.doubleSpinWidthSize.value()
+                point_spacement = self.ui.doubleSpinPointSpacement.value()
+                filename = "{}_alt{}_linewidth{}_pointspace{}_droneang{}.txt".format(k, altitude_mts, line_width,
+                                                                                     point_spacement, desired_angle)
 
             else:
                 altitude_mts = self.ui.spinHexAltitude.value() + hex_altitude_multiplicator
                 time_to_wait = 0
                 if not (0 <= desired_angle <= 360):
                     desired_angle = self.ui.spinHexAngle.value()
+
+                filename = "{}_alt{}_width{}_droneang{}.txt".format(k, altitude_mts, desired_angle)
 
             wp_alt_combo_text = self.ui.comboWPALT.currentText()
             if wp_alt_combo_text == "Follow Terrain":
@@ -277,6 +279,9 @@ class MainUi(QtGui.QMainWindow):
             gps_export_str.append(
                 base_srt.format(p_counter, 0, wp_alt_type, 20, 0, reach_radius, 0, desired_angle,
                                 last_coord['lat'], last_coord['lng'], altitude_mts, 1))
+
+            filepath = os.path.join(directory, filename)
+            print "Writting to file...", filepath, v
 
             f = open(filepath, 'w')
             f.write(header)
