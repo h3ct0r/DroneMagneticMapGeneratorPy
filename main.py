@@ -112,7 +112,7 @@ class MainUi(QtGui.QMainWindow):
         self.ui.labelStatus.setText("Polygon shape loaded... " + str(datetime.datetime.now()))
         pass
 
-    def loadHTMLTemplate(self, filename='map_template.html'):
+    def loadHTMLTemplate(self, filename='html/map_template.html'):
         msg = "Loading map..."
         self.ui.labelStatus.setText(msg + " " + str(datetime.datetime.now()))
 
@@ -125,7 +125,8 @@ class MainUi(QtGui.QMainWindow):
             msg = "Error loading map: {0} : ".format(str(e), str(datetime.datetime.now()))
             self.ui.labelStatus.setText(msg)
 
-        self.ui.webView.setHtml(html_template, QtCore.QUrl('qrc:/'))
+        #self.ui.webView.setHtml(html_template, QtCore.QUrl('qrc:/'))
+        self.ui.webView.load(QtCore.QUrl.fromLocalFile(os.path.abspath(filename)))
         self.ui.webView.page().mainFrame().addToJavaScriptWindowObject('self', self)
         self.ui.webView.loadFinished.connect(self.loadFinishedHtml)
         pass
