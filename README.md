@@ -59,6 +59,24 @@ python main.py
  - Save previous config and load it on start up
  - Configure start and end nodes for the hexagons and magnetic route
 
+Citing:
+----
+
+If you use this software for your research, please use this citation:
+
+```
+@article{azpurua2018multi,
+  title={Multi-robot coverage path planning using hexagonal segmentation for geophysical surveys},
+  author={Azp{\'u}rua, H{\'e}ctor and Freitas, Gustavo M and Macharet, Douglas G and Campos, Mario FM},
+  journal={Robotica},
+  volume={36},
+  number={8},
+  pages={1144--1166},
+  year={2018},
+  publisher={Cambridge University Press}
+}
+```
+
 License
 ----
 
