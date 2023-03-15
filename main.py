@@ -2,9 +2,9 @@
 
 import os
 import sys
-from PyQt4 import QtCore, QtGui, QtWebKit
+from PyQt5 import QtCore, QtGui, QtWidgets, QtWebKitWidgets
 from layout import Ui_MainWindow
-from PyQt4.QtCore import *
+from PyQt5.QtCore import *
 import json
 import datetime
 import sim.simulation
@@ -15,12 +15,12 @@ import time
 import sim.cover_polygon
 import sim.cover_hexagon
 
-class WebPage(QtWebKit.QWebPage):
+class WebPage(QtWebKitWidgets.QWebPage):
     def javaScriptConsoleMessage(self, msg, line, source):
         print '%s line %d: %s' % (source, line, msg)
 
 
-class MainUi(QtGui.QMainWindow):
+class MainUi(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
         super(MainUi, self).__init__(parent)
 
@@ -43,13 +43,13 @@ class MainUi(QtGui.QMainWindow):
         self.ui.doubleSpinWidthSize.valueChanged.connect(self.paramsChanged)
         self.ui.doubleSpinPointSpacement.valueChanged.connect(self.paramsChanged)
 
-        self.connect(self.ui.actionSave_polygon_shape, SIGNAL("triggered()"), self.savePolyShapeToFile)
-        self.connect(self.ui.actionLoad_polygon_shape, SIGNAL("triggered()"), self.loadPolyShapeFromFile)
-        self.connect(self.ui.actionAdd_GPS_markers_from_file, SIGNAL("triggered()"), self.loadGPSMarkersFromFile)
-        self.connect(self.ui.actionClear_GPS_markers, SIGNAL("triggered()"), self.clearGPSMarkers)
-        self.connect(self.ui.actionExit_program, SIGNAL("triggered()"), self.close)
-        self.connect(self.ui.actionReload_Map, SIGNAL("triggered()"), self.loadHTMLTemplate)
-        self.connect(self.ui.actionExport_Route, SIGNAL("triggered()"), self.exportGPSroute)
+        self.ui.actionSave_polygon_shape.triggered.connect(self.savePolyShapeToFile)
+        self.ui.actionLoad_polygon_shape.triggered.connect(self.loadPolyShapeFromFile)
+        self.ui.actionAdd_GPS_markers_from_file.triggered.connect(self.loadGPSMarkersFromFile)
+        self.ui.actionClear_GPS_markers.triggered.connect(self.clearGPSMarkers)
+        self.ui.actionExit_program.triggered.connect(self.close)
+        self.ui.actionReload_Map.triggered.connect(self.loadHTMLTemplate)
+        self.ui.actionExport_Route.triggered.connect(self.exportGPSroute)
 
         self.path_gps_json = None
         self.path_simplified_gps_json = None
@@ -66,7 +66,7 @@ class MainUi(QtGui.QMainWindow):
     def loadGPSMarkersFromFile(self):
         self.ui.labelStatus.setText("Loading GPS markers from file... " + str(datetime.datetime.now()))
 
-        fileName = QtGui.QFileDialog.getOpenFileName(self, "Select a GPS file to load into markers", "", "")
+        fileName = QtWidgets.QFileDialog.getOpenFileName(self, "Select a GPS file to load into markers", "", "")
         if fileName:
             print(fileName)
 
@@ -170,7 +170,7 @@ class MainUi(QtGui.QMainWindow):
         print 'Routes:', routes
 
         if len(routes.keys()) > 0:
-            directory = QtGui.QFileDialog.getExistingDirectory(self, 'Select directory to export routes ...')
+            directory = QtWidgets.QFileDialog.getExistingDirectory(self, 'Select directory to export routes ...')
             directory = str(directory)
             print 'selected dir', directory
         else:
@@ -432,7 +432,7 @@ class MainUi(QtGui.QMainWindow):
 
 
 if __name__ == "__main__":
-    app = QtGui.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     qt_app = MainUi()
     qt_app.show()
     sys.exit(app.exec_())
