@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  drone_map_generator_service:
+    image: h3ct0r/drone-map-generator:v1.0
+    container_name: drone_map_generator
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    network_mode: host
+    environment:
+      - DISPLAY
+      - PYTHONUNBUFFERED=1
+    ipc: host
+    # restart: always
+    volumes:
+    - $HOME/.Xauthority:/root/.Xauthority:rw
+    - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    - $PWD/wp_lists:/app/wp_lists:rw
+    privileged: true
+    command: /bin/bash -c 'cd /app/ && python main.py'
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
