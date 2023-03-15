@@ -19,7 +19,7 @@ DroneMagneticMapGeneratorPy uses a number of open source projects to work proper
 * [Leaflet] - a opensource javascript library for maps
 
 ### Installation
-> Option #1: Docker - It work on my machine!
+> Option #1: Docker - It work on all machines!
 1) Clone the repo 
 ```sh
 git clone https://github.com/h3ct0r/DroneMagneticMapGeneratorPy
@@ -33,7 +33,7 @@ xhost +
 docker compose up # or docker-compose up depending on your docker version
 ```
 
-> Option #2: System Install - It may work on your machine!
+> Option #2: System Install - It work on my machine!
 1) Clone the repo 
 ```sh
 git clone https://github.com/h3ct0r/DroneMagneticMapGeneratorPy
